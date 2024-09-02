@@ -5,8 +5,75 @@
 Morg is a ~cli-interface~ that allows for org files containing
 attachments to be easily movable/copyable inside a system.
 
+
 - Related blog post: TODO
-  
+
+* Disclaimer
+This script was developed really hastily and I do not remember if I
+ever completed all the changes I wanted or something is left in the
+air.
+
+If you want to be sure that no harm will occur, make a copy of your
+directory to tmp ~¯\_(ツ)_/¯~...
+
+Sadly, but it was a conscious choice back when it was developed, it
+enforces normalization. Even if you do not want linked image files
+will be moved in ~./images~, before moving.
+
+Pull requests and issues are welcome.
+
+** Usage
+#+NAME: How to use morg
+#+begin_example
+usage: morg.py [-h] [-d] [-v] {mimdir,morg,corg,dev} file destination
+morg.py: error: the following arguments are required: command, file, destination
+#+end_example
+
+** Subcommands
+
+*** Mimdir
+Move image directory. This is for normalization purposes.
+
+*** TODO Morg
+Move org file.
+- With attachments
+- afaik this does not work
+- how brilliant (sigh), to name a script after the functionality i
+  decided to implement last.
+
+*** Corg
+Copy org file. 
+- With attachments
+
+*** TODO Rorg
+Remove org file.
+- Sometimes I find images present that are not linked by any file, but
+  remained there after the original org file was deleted. Since, for
+  obvious reasons, I do not want the normalization command to remove
+  images (though at the moment of writing this I do not know what I
+  did when I developed the code :P), I think it would be beneficial to
+  eventually add this functionality as well. This could also be
+  thought of as a reversal of corg.
+
+*** TODO Dev
+Ignore this one, I just did not want to make it "too official". This
+one exists to help me better understand what is going on.
+
+** How I use it
+Since I have the repository on my machine for easy modifications, I
+have just linked it: You can always just copy it to a directory inside
+your ~$PATH~.
+#+NAME: How I use it
+#+begin_src shell
+ln morg.py /usr/local/bin
+cp morg.py "(somewhere in $PATH)"
+#+end_src
+
+#+NAME: Examples used
+#+begin_src shell
+morg.py corg 20240830_htb_registry.org ~/chatziiola.github.io/content/posts
+#+end_src
+
 * Why not just ~cp~ and ~find~ for the attachments
 Despite the fact that I initially used this approach, ~morg~ is more
 powerful since it can be configured to also *normalize* the location of
@@ -31,3 +98,8 @@ I use it extensively to:
 - Move articles for my blog from my draft folder to publish
 - Move walkthroughs from my local note library to publish
 
+* Performance
+The whole process was heavily underestimated, and not having worked
+on similar tasks before, I approached performance issues rather
+naively. If you do not intend to overdo it it should not be a problem,
+but more effective algorithms are obvious even at the time of writing.
