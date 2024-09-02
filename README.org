@@ -1,0 +1,33 @@
+#+TITLE: Morg
+#+AUTHOR: Lamprinos Chatziioannou
+#+FILETAGS:
+
+Morg is a ~cli-interface~ that allows for org files containing
+attachments to be easily movable/copyable inside a system.
+
+- Related blog post: TODO
+  
+* Why not just ~cp~ and ~find~ for the attachments
+Despite the fact that I initially used this approach, ~morg~ is more
+powerful since it can be configured to also *normalize* the location of
+files.
+
+* Why python and not pure shell?
+I am not saying that it should not be possible (perhaphs even better)
+for ~morg~ to be implemented in pure shell, but I did not feel like it.
+I wanted to write something in python, just for the sake of writing in
+python. I also had a functionality I wanted my program to perform.
+Could do both of them with ~morg~.
+
+* On normalization
+The main reason actually why I started this was to be able to quickly
+/tidy/ up my org directories, cluttered by lots of images,
+inconsistently named/placed. All images had to be inside of a parent
+image folder, and *all links* should also be updated to avoid breaking
+stuff. 
+
+* Other uses
+I use it extensively to:
+- Move articles for my blog from my draft folder to publish
+- Move walkthroughs from my local note library to publish
+
